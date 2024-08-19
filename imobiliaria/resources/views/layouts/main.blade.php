@@ -24,17 +24,11 @@
                 <img src="/imgs/logo.png" class="logoImg">
             </a>
 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="/">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/">Imoveis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/">Contato</a>
-                    </li>
-                </ul>
+            <div class="nav-buttons ms-auto d-flex">
+                <a href="/" class="btn btn-custom mx-2">Inicio</a>
+                <a href="/imoveis" class="btn btn-custom mx-2">Imoveis</a>
+                <a href="/contato" class="btn btn-custom mx-2">Contato</a>
+            </div>
             <div>
 
             </div>
@@ -54,9 +48,9 @@
 
     <footer class="footer">
         <div class="footer-links">
-            <a href="#">Início</a>
-            <a href="#">Imóveis</a>
-            <a href="#">Contato</a>
+            <a href="/">Início</a>
+            <a href="/imoveis">Imóveis</a>
+            <a href="/contato">Contato</a>
         </div>
         <div class="footer-info">
             <div class="footer-item">
