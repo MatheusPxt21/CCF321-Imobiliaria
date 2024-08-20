@@ -1,6 +1,8 @@
 /* ========= Header ============= */
 
 .header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     background-color: #3e2c1d;
     width: 100%;
     min-height: 5rem;
