@@ -141,6 +141,8 @@
     background-color: #f5e1c1; /* Cor de fundo da seção */
     padding: 40px;
     border-radius: 15px;
+    min-height: 50rem;
+    max-height: 50rem;
 }
 
 .location-section,
