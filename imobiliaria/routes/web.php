@@ -29,3 +29,7 @@ Route::get('/imoveis', function () {
 Route::get('/contato', function () {
     return view('contato');
 });
+
+Route::get('/corretor', function () {
+    return view('corretor');
+});
