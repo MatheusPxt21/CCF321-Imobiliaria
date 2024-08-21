@@ -6,15 +6,15 @@
 
     <div class="loginPage">
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form" method="POST" action="{{ route('login') }}">
             <h2 class="text-center">LOGIN</h2>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Digite seu email">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu email">
             </div>
             <div class="mb-3">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Digite sua senha">
             </div>
             <div class="mb-3 d-flex justify-content-between">
                 <div class="form-check">
