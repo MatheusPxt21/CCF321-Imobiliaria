@@ -177,3 +177,16 @@
 .contact-form .btn-custom:hover {
     background-color: #3c2b18; /* Cor ao passar o mouse no botão */
 }
+
+/* ========= Página Home ============= */
+
+
+/* ========= Página Corretor ============= */
+.corretorContent{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f5e1c1;
+    padding: 40px;
+    border-radius: 15px;
+}
