@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,7 @@ Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/imoveis', function () {
-    return view('imoveis');
-});
+Route::get('imoveis', [ImovelController::class, "index"])->name('imoveis');
 
 Route::get('/contato', function () {
     return view('contato');

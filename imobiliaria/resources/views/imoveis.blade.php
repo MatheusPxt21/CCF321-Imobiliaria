@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'D&R Housing - Imoveis')
+@section('title', 'D&R Housing - Imóveis')
 
 @section('content')
 
@@ -16,16 +16,16 @@
 
         <!-- Seção de Imóveis -->
         <div class="property-grid">
-            @for ($i = 0; $i < 8; $i++)
+            @foreach ($imoveis as $imovel)
                 <div class="property-card">
-                    <img src="{{ asset('path/to/image.jpg') }}" alt="Imagem do Imóvel">
+                    <img src="{{ asset('storage/' . $imovel->image_path) }}" alt="Imagem do Imóvel">
                     <div class="property-info">
-                        <h3>Lorem Ipsum</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h3>{{ $imovel->titulo }}</h3>
+                        <p>{{ $imovel->descricao }}</p>
                         <button class="btn">Saiba mais</button>
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 
