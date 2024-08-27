@@ -1,65 +1,80 @@
 @extends('layouts.main')
+<section class="header-section">
+        <div class="header-text">
+        <a href="#"><h2 class="header-title">Entrar como Corretor</h2></a>
+        </div>
+</section>
 
 @section('title', 'D&R Housing')
 
 @section('content')
 
 <div class="home-container">
+
     <!-- Seção de Imagem Principal -->
     <section class="hero-section">
-        <img src="/imgs/hero-image.jpg" alt="Construindo Lares" class="img-fluid">
-        <div class="hero-text">
-            <h1>Construindo Lares</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn btn-custom">Saiba Mais</a>
+        <div class="img-hero-section">
+            <div class="banner">
+                <img src="/imgs/banner.png" class="img-fluid">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            <div>
         </div>
-        <div class="social-links">
-            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <div class="hero-text">
+            <h1>Cosntruindo Lares</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel massa pulvinar, scelerisque odio sed, sodales sapien. Quisque vehicula lectus nec nunc dapibus, vitae sagittis velit ultrices.</p>
+            <a href="#" class="btn btn-custom">Saiba Mais</a>
         </div>
     </section>
 
     <!-- Seção de Destaques -->
     <section class="highlights-section">
         <h2>Destaques</h2>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="highlight-item">
-                    <img src="/imgs/highlight1.jpg" class="img-fluid">
-                    <div class="highlight-text">
-                        <h4>Lorem Ipsum</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <a href="#" class="btn btn-custom">Saiba Mais</a>
+        <div class="highlights-cards">
+            <div class="row highlight-card-row">
+                <div class="col-md-3 highlight-card">
+                    <div class="highlight-item">
+                        <img src="/imgs/highlight1.jpg" class="img-fluid">
+                        <div class="highlight-text">
+                            <h4>Lorem Ipsum</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="btn btn-custom">Saiba Mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 highlight-card">
+                    <div class="highlight-item">
+                        <img src="/imgs/highlight2.jpg" class="img-fluid">
+                        <div class="highlight-text">
+                            <h4>Lorem Ipsum</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="btn btn-custom">Saiba Mais</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="highlight-item">
-                    <img src="/imgs/highlight2.jpg" class="img-fluid">
-                    <div class="highlight-text">
-                        <h4>Lorem Ipsum</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <a href="#" class="btn btn-custom">Saiba Mais</a>
+            <div class="row highlight-card-row">
+                <div class="col-md-3 highlight-card">
+                    <div class="highlight-item">
+                        <img src="/imgs/highlight1.jpg" class="img-fluid">
+                        <div class="highlight-text">
+                            <h4>Lorem Ipsum</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="btn btn-custom">Saiba Mais</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="highlight-item">
-                    <img src="/imgs/highlight3.jpg" class="img-fluid">
-                    <div class="highlight-text">
-                        <h4>Lorem Ipsum</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <a href="#" class="btn btn-custom">Saiba Mais</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="highlight-item">
-                    <img src="/imgs/highlight4.jpg" class="img-fluid">
-                    <div class="highlight-text">
-                        <h4>Lorem Ipsum</h4>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <a href="#" class="btn btn-custom">Saiba Mais</a>
+                <div class="col-md-3 highlight-card">
+                    <div class="highlight-item">
+                        <img src="/imgs/highlight2.jpg" class="img-fluid">
+                        <div class="highlight-text">
+                            <h4>Lorem Ipsum</h4>
+                            <p>Lorem ipsum dolor sit amet.</p>
+                            <a href="#" class="btn btn-custom">Saiba Mais</a>
+                        </div>
                     </div>
                 </div>
             </div>
