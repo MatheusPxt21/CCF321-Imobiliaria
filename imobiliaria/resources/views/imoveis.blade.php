@@ -16,16 +16,21 @@
 
         <!-- Seção de Imóveis -->
         <div class="property-grid">
-            @foreach ($imoveis as $imovel)
-                <div class="property-card">
-                    <img src="{{ asset('storage/' . $imovel->image_path) }}" alt="Imagem do Imóvel">
-                    <div class="property-info">
-                        <h3>{{ $imovel->titulo }}</h3>
-                        <p>{{ $imovel->descricao }}</p>
-                        <button class="btn">Saiba mais</button>
-                    </div>
+        @foreach ($imoveis as $imovel)
+            <div class="property-card">
+                @if($imovel->imagens->isNotEmpty())
+                    <img src="{{ asset('storage/' . $imovel->imagens->first()->caminho_imagem) }}" alt="Imagem do Imóvel">
+                @else
+                    <img src="{{ asset('storage/default.jpg') }}" alt="Imagem do Imóvel">
+                @endif
+                <div class="property-info">
+                    <h3>{{ $imovel->titulo }}</h3>
+                    <p>{{ $imovel->descricao }}</p>
+                    <button class="btn">Saiba mais</button>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
+
         </div>
     </div>
 
