@@ -22,22 +22,26 @@ class AdminController extends Controller
 
     // Salvar o novo corretor no banco de dados
     public function storeCorretor(Request $request) {
-        $request->validate([
-            'email' => 'required|email|unique:corretores',
-            'senha' => 'required|min:6',
-            'nome' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email|unique:corretores',
+                'senha' => 'required|min:6',
+                'nome' => 'required',
+            ]);
 
-        $corretor = new Corretor();
-        $corretor->email = $request->input('email');
-        $corretor->senha = bcrypt($request->input('senha'));
-        $corretor->nome = $request->input('nome');
-        $corretor->descricao = $request->input('descricao');
-        $corretor->save();
+            $corretor = new Corretor();
+            $corretor->email = $request->input('email');
+            $corretor->senha = bcrypt($request->input('senha'));
+            $corretor->nome = $request->input('nome');
+            $corretor->descricao = $request->input('descricao');
+            $corretor->save();
 
-        return redirect()->route('admin.corretores')->with('success', 'Corretor criado com sucesso!');
+            return view('admin.corretores.index', compact('corretores'));
+        } catch (\Exception $e) {
+            // Captura o erro e exibe no log ou na página
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
     }
-
     // Exibir o perfil de um corretor específico
     public function showCorretor($id) {
         $corretor = Corretor::findOrFail($id);

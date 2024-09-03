@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController
+class AuthController extends Controller
 {
     public function showLoginForm()
     {
@@ -40,7 +40,6 @@ class AuthController
                 return redirect()->route('admin.corretores');
             } else {
                 return redirect('/');
-
             }
         }
 
