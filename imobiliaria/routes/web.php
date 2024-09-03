@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,7 @@ Route::get('imoveis', [ImovelController::class, "index"])->name('imoveis');
 Route::get('/contato', function () {
     return view('contato');
 });
+Route::post('/contato', [ContactController::class, 'submit'])->name('contato.submit');
 
 Route::get('/corretor', function () {
     return view('corretor');
