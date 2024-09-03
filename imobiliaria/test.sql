@@ -19,3 +19,11 @@ VALUES
     ('Terreno Industrial', 'Terreno em área industrial.', 'Terreno', '["Venda", "Industrial"]', 600000.00, 4, NOW(), NOW()),
     ('Casa Familiar', 'Casa espaçosa, ideal para famílias.', 'Casa', '["Venda", "Residencial"]', 400000.00, 1, NOW(), NOW()),
     ('Apartamento Confortável', 'Apartamento confortável próximo a parques.', 'Apartamento', '["Venda", "Residencial"]', 350000.00, 2, NOW(), NOW());
+
+INSERT INTO imobiliaria.admins (email, senha, nome, created_at, updated_at)
+VALUES
+    ('admin1@example.com', 'senha1', 'Admin 1', NOW(), NOW()),
+    ('admin2@example.com', 'senha2', 'Admin 2', NOW(), NOW()),
+    ('admin3@example.com', 'senha3', 'Admin 3', NOW(), NOW()),
+    ('admin4@example.com', 'senha4', 'Admin 4', NOW(), NOW()),
+    ('admin5@example.com', 'senha5', 'Admin 5', NOW(), NOW());
