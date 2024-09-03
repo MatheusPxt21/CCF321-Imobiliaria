@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,8 @@ Route::get('/contato', function () {
 
 Route::get('/corretor', function () {
     return view('corretor');
+});
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });

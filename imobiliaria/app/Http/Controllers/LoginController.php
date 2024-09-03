@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
+use App\Models\Corretor;
+use App\Models\Admin;
 
-class LoginController
+class LoginController extends Controller
 {
     public function showLoginForm()
     {
@@ -17,22 +18,26 @@ class LoginController
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            Log::info("Went through!!!");
-            return redirect()->intended('dashboard');
+
+        if ($request->has('adminCheck')) {
+            if (Auth::guard('admin')->attempt(['email' => $credentials['email'], 'senha' => $credentials['password']])) {
+                return redirect()->route('dashboard');
+            }
         }
 
-        Log::warning("Bad credencials :(");
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        if ($request->has('corretorCheck')) {
+            if (Auth::guard('corretor')->attempt(['email' => $credentials['email'], 'senha' => $credentials['password']])) {
+                return redirect()->route('imoveis');
+            }
+        }
+
+        return redirect()->back()->withErrors(['login' => 'Credenciais inválidas']);
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
-        return redirect('/login');
+        return redirect()->route('login');
     }
 }
