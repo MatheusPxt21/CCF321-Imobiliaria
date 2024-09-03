@@ -36,10 +36,12 @@ class AuthController
             // Optionally, log the user in using Laravel's auth system
             Auth::login($user);
 
-            return response()->json([
-                'message' => 'Login successful',
-                'user' => $user,
-            ]);
+            if ($request->role === 'admin') {
+                return redirect()->route('admin.corretores');
+            } else {
+                return redirect('/');
+
+            }
         }
 
         return response()->json([
