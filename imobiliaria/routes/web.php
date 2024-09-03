@@ -35,3 +35,6 @@ Route::post('/contato', [ContactController::class, 'submit'])->name('contato.sub
 Route::get('/corretor', function () {
     return view('corretor');
 });
+
+Route::get('/imovel/store', [ImovelController::class, 'display'])->name('imovel.display');
+Route::post('/imovel/store', [ImovelController::class, 'store'])->name('imovel.store');
