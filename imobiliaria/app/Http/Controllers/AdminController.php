@@ -11,7 +11,6 @@ class AdminController extends Controller
     // Exibir todos os corretores
     public function showCorretores() {
         $corretores = Corretor::all();
-        //dd($corretores);
         return view('admin.corretores.index', compact('corretores'));
     }
 
@@ -24,9 +23,10 @@ class AdminController extends Controller
     public function storeCorretor(Request $request) {
         try {
             $request->validate([
-                'email' => 'required|email|unique:corretores',
+                'email' => 'required|email|unique:corretores,email',
                 'senha' => 'required|min:6',
                 'nome' => 'required',
+                'descricao' => 'nullable',
             ]);
 
             $corretor = new Corretor();
@@ -36,12 +36,13 @@ class AdminController extends Controller
             $corretor->descricao = $request->input('descricao');
             $corretor->save();
 
-            return view('admin.corretores.index', compact('corretores'));
+            return redirect()->route('admin.corretores')->with('success', 'Corretor adicionado com sucesso!');
         } catch (\Exception $e) {
             // Captura o erro e exibe no log ou na página
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
     // Exibir o perfil de um corretor específico
     public function showCorretor($id) {
         $corretor = Corretor::findOrFail($id);
