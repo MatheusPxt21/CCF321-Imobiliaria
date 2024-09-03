@@ -21,11 +21,16 @@ class ImovelController extends Controller
         return view('imoveis', compact('imoveis'));
     }
 
+    public function display()
+    {
+        return view('adicionar_imovel');
+    }
+
     /**
      * Display the specified imovel.
      *
      * @param \App\Models\Imovel $imovel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function show(Imovel $imovel)
     {
@@ -36,7 +41,7 @@ class ImovelController extends Controller
     /**
      * Show the form for creating a new imovel.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function create()
     {
@@ -47,22 +52,29 @@ class ImovelController extends Controller
      * Store a newly created imovel in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        // Validate and create the imovel
+        // Validate the request data
         $validatedData = $request->validate([
             'titulo' => 'required|string|max:255',
             'descricao' => 'required|string',
-            'tipo_imovel' => 'required|in:Casa,Apartamento,Comercial,Terreno',
-            'categorias' => 'required|json',
+            'tipo' => 'required|in:Casa,Apartamento,Comercial,Terreno',
+            'categorias' => 'required|string',
             'valor' => 'nullable|numeric|min:0',
             'corretor_id' => 'required|exists:corretores,id',
         ]);
 
         // Create a new Imovel instance and save it to the database
-        Imovel::create($validatedData);
+        Imovel::create([
+            'titulo' => $validatedData['titulo'],
+            'descricao' => $validatedData['descricao'],
+            'tipo' => $validatedData['tipo'],
+            'categorias' => $validatedData['categorias'],
+            'valor' => $validatedData['valor'],
+            'corretor_id' => $validatedData['corretor_id'],
+        ]);
 
         // Redirect to the list of imoveis with a success message
         return redirect()->route('imoveis.index')->with('success', 'Imóvel criado com sucesso!');
@@ -72,7 +84,7 @@ class ImovelController extends Controller
      * Show the form for editing the specified imovel.
      *
      * @param \App\Models\Imovel $imovel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function edit(Imovel $imovel)
     {
@@ -84,7 +96,7 @@ class ImovelController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Imovel $imovel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, Imovel $imovel)
     {
@@ -109,7 +121,7 @@ class ImovelController extends Controller
      * Remove the specified imovel from storage.
      *
      * @param \App\Models\Imovel $imovel
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Imovel $imovel)
     {

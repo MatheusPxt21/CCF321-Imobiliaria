@@ -39,7 +39,6 @@ Route::get('/corretor', function () {
 });
 
 
-
 Route::get('/admin/corretores', [AdminController::class, 'showCorretores'])->name('admin.corretores');
 Route::get('/admin/corretores/create', [AdminController::class, 'createCorretor'])->name('admin.corretores.create');
 Route::post('/admin/corretores', [AdminController::class, 'storeCorretor'])->name('admin.corretores.store');
@@ -47,3 +46,7 @@ Route::get('/admin/corretores/{id}', [AdminController::class, 'showCorretor'])->
 Route::delete('/admin/corretores/{id}', [AdminController::class, 'deleteCorretor'])->name('admin.corretores.delete');
 
 Route::get('/admin/visitas', [AdminController::class, 'showVisitas'])->name('admin.visitas');
+
+Route::get('/imovel/store', [ImovelController::class, 'display'])->name('imovel.display');
+Route::post('/imovel/store', [ImovelController::class, 'store'])->name('imovel.store');
+
