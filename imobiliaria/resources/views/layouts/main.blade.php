@@ -28,6 +28,19 @@
                 <a href="/" class="btn btn-custom mx-2">Inicio</a>
                 <a href="/imoveis" class="btn btn-custom mx-2">Imoveis</a>
                 <a href="/contato" class="btn btn-custom mx-2">Contato</a>
+
+                <div class="auth-buttons ms-auto d-flex">
+                    @if(auth()->check())
+                        <span class="btn btn-custom mx-2">Olá, {{ auth()->user()->nome }}</span>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-custom mx-2">Sair</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-custom mx-2">Login</a>
+                    @endif
+                </div>
+
             </div>
             <div>
 

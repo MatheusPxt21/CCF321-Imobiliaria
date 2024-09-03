@@ -1,9 +1,4 @@
 @extends('layouts.main')
-<section class="header-section">
-        <div class="header-text">
-        <a href="#"><h2 class="header-title">Entrar como Corretor</h2></a>
-        </div>
-</section>
 
 @section('title', 'D&R Housing')
 
