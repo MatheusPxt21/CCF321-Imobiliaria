@@ -37,7 +37,9 @@
                             <button type="submit" class="btn btn-custom mx-2">Sair</button>
                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-custom mx-2">Login</a>
+                        @unless(request()->routeIs('login'))
+                            <a href="{{ route('login') }}" class="btn btn-custom mx-2">Login</a>
+                        @endunless
                     @endif
                 </div>
 
