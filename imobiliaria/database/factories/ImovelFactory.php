@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Corretor;
 use App\Models\Imovel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

@@ -10,7 +10,7 @@ class ImovelController extends Controller
     /**
      * Display a listing of the imoveis.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
     public function index()
     {
@@ -29,13 +29,14 @@ class ImovelController extends Controller
     /**
      * Display the specified imovel.
      *
-     * @param \App\Models\Imovel $imovel
+     * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function show(Imovel $imovel)
+    public function show($id)
     {
-        // Pass the specific imovel to the view
-        return view('imoveis.show', compact('imovel'));
+        $imovel = Imovel::findOrFail($id);
+
+        return view('imovel', compact('imovel'));
     }
 
     /**
