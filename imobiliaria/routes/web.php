@@ -27,7 +27,10 @@ Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('imoveis', [ImovelController::class, "index"])->name('imoveis');
+Route::get('imoveis', [ImovelController::class, "index"])->name('imoveis.index');
+
+Route::get('imoveis/{id}', [ImovelController::class, "show"])->name('imovel');
+
 
 Route::get('/contato', function () {
     return view('contato');
