@@ -5,7 +5,7 @@
 @section('content')
     <div class="container mt-5">
         <h2>Adicionar Novo Imóvel</h2>
-        <form method="POST" action="{{ route('imovel.store') }}">
+        <form method="POST" action="{{ route('imoveis.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
@@ -20,10 +20,10 @@
             <div class="mb-3">
                 <label for="tipo" class="form-label">Tipo de Imóvel</label>
                 <select class="form-control" id="tipo" name="tipo" required>
-                    <option value="casa">Casa</option>
-                    <option value="apartamento">Apartamento</option>
-                    <option value="comercial">Comercial</option>
-                    <!-- Add more types as needed -->
+                    <option value="Casa">Casa</option>
+                    <option value="Apartamento">Apartamento</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Terreno">Terreno</option>
                 </select>
             </div>
             <div class="mb-3">
@@ -36,7 +36,56 @@
                 <input type="number" class="form-control" id="valor" name="valor" placeholder="Insira o valor do imóvel"
                        required>
             </div>
-            <button type="submit" class="btn btn-primary">Adicionar Imóvel</button>
+
+            <!-- Multiple Image Upload -->
+            <div class="mb-3">
+                <label for="imagens" class="form-label">Imagens do Imóvel</label>
+                <input type="file" class="form-control" id="imagens" name="imagens[]" multiple accept="image/*">
+            </div>
+
+            <!-- Simplified Image Preview Grid -->
+            <div id="imagePreview" class="row mt-3">
+                <!-- Images will be dynamically added here -->
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-4">Adicionar Imóvel</button>
         </form>
     </div>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS (with Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('imagens').addEventListener('change', function (event) {
+                let imagePreview = document.getElementById('imagePreview');
+                imagePreview.innerHTML = ''; // Clear existing images
+
+                let files = event.target.files;
+                if (files.length > 0) {
+                    for (let i = 0; i < files.length; i++) {
+                        let reader = new FileReader();
+                        reader.onload = function (e) {
+                            let col = document.createElement('div');
+                            col.classList.add('col-md-3', 'mb-3');
+
+                            let img = document.createElement('img');
+                            img.src = e.target.result;
+                            img.classList.add('img-fluid', 'img-thumbnail');
+                            img.alt = `Imagem ${i + 1}`; // Alt text for accessibility
+
+                            col.appendChild(img);
+                            imagePreview.appendChild(col);
+                        };
+                        reader.readAsDataURL(files[i]);
+                    }
+                }
+            });
+        });
+
+    </script>
 @endsection

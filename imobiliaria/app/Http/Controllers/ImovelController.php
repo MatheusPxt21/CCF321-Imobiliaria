@@ -101,7 +101,6 @@ class ImovelController extends Controller
      */
     public function update(Request $request, Imovel $imovel)
     {
-        // Validate and update the imovel
         $validatedData = $request->validate([
             'titulo' => 'required|string|max:255',
             'descricao' => 'required|string',
@@ -111,10 +110,8 @@ class ImovelController extends Controller
             'corretor_id' => 'required|exists:corretores,id',
         ]);
 
-        // Update the imovel with the validated data
         $imovel->update($validatedData);
 
-        // Redirect to the list of imoveis with a success message
         return redirect()->route('imoveis.index')->with('success', 'Imóvel atualizado com sucesso!');
     }
 
@@ -126,10 +123,8 @@ class ImovelController extends Controller
      */
     public function destroy(Imovel $imovel)
     {
-        // Delete the imovel
         $imovel->delete();
 
-        // Redirect to the list of imoveis with a success message
         return redirect()->route('imoveis.index')->with('success', 'Imóvel deletado com sucesso!');
     }
 }

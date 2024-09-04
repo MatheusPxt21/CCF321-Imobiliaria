@@ -21,19 +21,16 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'senha' => 'required',
-            'role' => 'required|in:admin,corretor', // role should be either 'admin' or 'corretor'
+            'role' => 'required|in:admin,corretor',
         ]);
 
-        // Determine the role and attempt login
         if ($request->role === 'admin') {
             $user = Admin::where('email', $request->email)->first();
         } elseif ($request->role === 'corretor') {
             $user = Corretor::where('email', $request->email)->first();
         }
 
-        // Check if user exists and password is correct
         if ($user && Hash::check($request->senha, $user->senha)) {
-            // Optionally, log the user in using Laravel's auth system
             Auth::login($user);
 
             if ($request->role === 'admin') {

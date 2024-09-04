@@ -18,38 +18,42 @@ use App\Http\Controllers\AdminController;
 |
 */
 
+// Home Route
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Authentication Routes
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
+// Imovel Routes
+Route::get('imoveis', [ImovelController::class, 'index'])->name('imoveis.index');
+Route::get('imoveis/create', [ImovelController::class, 'display'])->name('imoveis.display');
+Route::post('imoveis/create', [ImovelController::class, 'store'])->name('imoveis.store');
+Route::get('imoveis/{id}', [ImovelController::class, 'show'])->name('imovel.show');
 
-Route::get('imoveis', [ImovelController::class, "index"])->name('imoveis.index');
-
-Route::get('imoveis/{id}', [ImovelController::class, "show"])->name('imovel');
-
-
+// Contact Routes
 Route::get('/contato', function () {
     return view('contato');
 });
 Route::post('/contato', [ContactController::class, 'submit'])->name('contato.submit');
 
+// Corretor Routes
 Route::get('/corretor', function () {
     return view('corretor');
 });
 
+// Admin Routes
+Route::prefix('admin')->name('admin.')->group(function () {
+    // Admin Corretores Routes
+    Route::get('/corretores', [AdminController::class, 'showCorretores'])->name('corretores');
+    Route::get('/corretores/create', [AdminController::class, 'createCorretor'])->name('corretores.create');
+    Route::post('/corretores', [AdminController::class, 'storeCorretor'])->name('corretores.store');
+    Route::get('/corretores/{id}', [AdminController::class, 'showCorretor'])->name('corretores.show');
+    Route::delete('/corretores/{id}', [AdminController::class, 'deleteCorretor'])->name('corretores.delete');
 
-Route::get('/admin/corretores', [AdminController::class, 'showCorretores'])->name('admin.corretores');
-Route::get('/admin/corretores/create', [AdminController::class, 'createCorretor'])->name('admin.corretores.create');
-Route::post('/admin/corretores', [AdminController::class, 'storeCorretor'])->name('admin.corretores.store');
-Route::get('/admin/corretores/{id}', [AdminController::class, 'showCorretor'])->name('admin.corretores.show');
-Route::delete('/admin/corretores/{id}', [AdminController::class, 'deleteCorretor'])->name('admin.corretores.delete');
-
-Route::get('/admin/visitas', [AdminController::class, 'showVisitas'])->name('admin.visitas');
-
-Route::get('/imovel/store', [ImovelController::class, 'display'])->name('imovel.display');
-Route::post('/imovel/store', [ImovelController::class, 'store'])->name('imovel.store');
-
+    // Admin Visitas Routes
+    Route::get('/visitas', [AdminController::class, 'showVisitas'])->name('visitas');
+});

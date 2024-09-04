@@ -12,23 +12,20 @@ class ContactController extends Controller
      */
     public function submit(Request $request)
     {
-        // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
             'message' => 'nullable|string',
         ]);
 
-        // Create a new Visitante record
         Visitante::create([
             'nome' => $request->input('name'),
             'telefone' => $request->input('phone'),
             'mensagem' => $request->input('message'),
-            'horario' => now()->format('H:i:s'), // Store the current time as the horario
-            'data' => now()->format('Y-m-d'), // Store the current date as the data
+            'horario' => now()->format('H:i:s'),
+            'data' => now()->format('Y-m-d'),
         ]);
 
-        // Optionally, redirect back with a success message
         return redirect()->back()->with('success', 'Mensagem enviada com sucesso!');
     }
 }
