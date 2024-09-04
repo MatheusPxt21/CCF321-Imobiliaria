@@ -6,10 +6,10 @@
 
     <div class="container">
         <!-- Seção de Busca -->
-        <div class="search-section text-center">
+        <div class="search-section text-center mb-5">
             <h1>ENCONTRE SEU IMÓVEL DOS SONHOS</h1>
             <form action="{{ route('imoveis.index') }}" method="GET" class="search-bar">
-                <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
+                <input type="text" name="search" placeholder="Buscar por título ou descrição..." value="{{ request('search') }}">
                 <button type="submit">PESQUISAR</button>
             </form>
         </div>

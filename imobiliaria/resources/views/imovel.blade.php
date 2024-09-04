@@ -30,7 +30,11 @@
                 @endif
             </p>
             <p><strong>Valor:</strong> R$ {{ number_format($imovel->valor, 2, ',', '.') }}</p>
-            <p><strong>Corretor:</strong> {{ $imovel->corretor->nome }}</p>
+            <p><strong>Corretor:</strong>
+                <a href="{{ route('corretor.show', $imovel->corretor->id) }}">
+                    {{ $imovel->corretor->nome }}
+                </a>
+            </p>
         </div>
 
         <div class="form-section mt-4">
@@ -50,9 +54,9 @@
                     <input type="time" class="form-control" name="time" id="time" required>
                 </div>
                 <div class="mb-3">
-                <textarea class="form-control" name="message" id="message" rows="3" readonly>
-                    Visita agendada para o imóvel {{ $imovel->id }}
-                </textarea>
+                    <textarea class="form-control" name="message" id="message" rows="3" readonly>
+                        Visita agendada para o imóvel {{ $imovel->id }}
+                    </textarea>
                 </div>
                 <button type="submit" class="btn btn-custom">Enviar</button>
             </form>

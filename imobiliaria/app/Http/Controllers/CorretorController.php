@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Imovel;
 use App\Models\Visitante;
+use App\Models\Corretor;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\ImovelController;
@@ -14,6 +15,12 @@ class CorretorController extends Controller
     {
         $visitas = Visitante::all();
         return view('corretores.create.index', compact('visitas'));
+    }
+
+    public function show($id)
+    {
+        $corretor = Corretor::findOrFail($id);
+        return view('corretor', compact('corretor'));
     }
 
     public function index()
