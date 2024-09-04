@@ -27,7 +27,7 @@
             <div class="nav-buttons ms-auto d-flex">
                 <a href="/" class="btn btn-custom mx-2">Inicio</a>
                 <a href="/imoveis" class="btn btn-custom mx-2">Imoveis</a>
-                <a href="{{ route('admin.corretores') }}" class="btn btn-custom mx-2">Adicionar Imoveis</a>
+                <a href="{{ route('imoveis.display') }}" class="btn btn-custom mx-2">Adicionar Imoveis</a>
 
                 <div class="auth-buttons ms-auto d-flex">
                     @if(auth()->check())
