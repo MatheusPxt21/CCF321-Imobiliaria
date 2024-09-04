@@ -29,7 +29,7 @@ class CorretorController extends Controller
         $imoveis = Imovel::where('corretor_id', $corretor->id)->get();
 
         // Filtrar visitas que estão associadas aos imóveis do corretor
-        $imovelIds = $imoveis->pluck('id'); // Pega os IDs dos imóveis do corretor
+        $imovelIds = $imoveis->pluck('id');
         $visitas = Visitante::whereIn('mensagem', function ($query) use ($imovelIds) {
             $query->select('id')
                   ->from('imoveis')

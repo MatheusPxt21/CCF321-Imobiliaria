@@ -40,17 +40,11 @@ class Imovel extends Model
         'valor' => 'decimal:2',
     ];
 
-    /**
-     * Get the corretor that owns the imovel.
-     */
     public function corretor()
     {
         return $this->belongsTo(Corretor::class);
     }
 
-    /**
-     * Get the images for the imovel.
-     */
     public function imagens()
     {
         return $this->hasMany(Imagem::class, 'imovel_id');

@@ -47,15 +47,13 @@
                 </select>
             </div>
 
-            <!-- Multiple Image Upload -->
             <div class="mb-3">
                 <label for="imagens" class="form-label">Imagens do Imóvel</label>
                 <input type="file" class="form-control" id="imagens" name="imagens[]" multiple accept="image/*">
             </div>
 
-            <!-- Simplified Image Preview Grid -->
             <div id="imagePreview" class="row mt-3">
-                <!-- Images will be dynamically added here -->
+
             </div>
 
             <button type="submit" class="btn btn-primary mt-4">Adicionar Imóvel</button>
@@ -73,7 +71,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('imagens').addEventListener('change', function (event) {
                 let imagePreview = document.getElementById('imagePreview');
-                imagePreview.innerHTML = ''; // Clear existing images
+                imagePreview.innerHTML = '';
 
                 let files = event.target.files;
                 if (files.length > 0) {
@@ -86,7 +84,7 @@
                             let img = document.createElement('img');
                             img.src = e.target.result;
                             img.classList.add('img-fluid', 'img-thumbnail');
-                            img.alt = `Imagem ${i + 1}`; // Alt text for accessibility
+                            img.alt = `Imagem ${i + 1}`;
 
                             col.appendChild(img);
                             imagePreview.appendChild(col);

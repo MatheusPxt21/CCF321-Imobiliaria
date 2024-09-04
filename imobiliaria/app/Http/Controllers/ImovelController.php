@@ -93,10 +93,9 @@ class ImovelController extends Controller
         // Processamento das imagens
         if ($request->hasFile('imagens')) {
             foreach ($request->file('imagens') as $imagem) {
-                // Armazenar a imagem
+
                 $path = $imagem->store('imgs/photos', 'public');
 
-                // Salvar a imagem no banco de dados
                 Imagem::create([
                     'imovel_id' => $imovel->id,
                     'caminho_imagem' => $path,

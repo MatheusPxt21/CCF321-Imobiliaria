@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create 3 Admin users
+
         Admin::create([
             'email' => 'admin1@example.com',
             'senha' => Hash::make('password123'),
@@ -36,7 +36,6 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Admin Three',
         ]);
 
-        // Create 3 Corretor users
         Corretor::create([
             'email' => 'corretor1@example.com',
             'senha' => Hash::make('password123'),

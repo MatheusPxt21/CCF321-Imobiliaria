@@ -28,7 +28,7 @@ class ImovelFactory extends Factory
             'tipo_imovel' => $this->faker->randomElement(['Casa', 'Apartamento', 'Comercial', 'Terreno']),
             'categorias' => $this->faker->randomElements(['Venda', 'Aluguel', 'Temporada'], rand(1, 3)),
             'valor' => $this->faker->optional()->randomFloat(2, 50000, 1000000),
-            'corretor_id' => Corretor::factory(), // Assuming you have a Corretor factory
+            'corretor_id' => Corretor::factory(),
         ];
     }
 }

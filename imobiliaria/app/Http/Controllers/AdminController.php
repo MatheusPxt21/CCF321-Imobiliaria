@@ -38,7 +38,6 @@ class AdminController extends Controller
 
             return redirect()->route('admin.corretores')->with('success', 'Corretor adicionado com sucesso!');
         } catch (\Exception $e) {
-            // Captura o erro e exibe no log ou na página
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }

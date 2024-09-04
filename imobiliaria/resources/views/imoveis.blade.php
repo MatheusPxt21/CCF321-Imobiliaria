@@ -16,9 +16,9 @@
 
         <!-- Seção de Imóveis -->
         <div class="property-grid container">
-            <div class="row justify-content-center"> <!-- Center the cards in the row -->
+            <div class="row justify-content-center">
                 @foreach ($imoveis as $imovel)
-                    <div class="col-12 col-lg-5 mb-4 d-flex justify-content-center"> <!-- Full width on small screens, half width on large screens, centered -->
+                    <div class="col-12 col-lg-5 mb-4 d-flex justify-content-center">
                         <div class="property-card">
                             @if($imovel->primeiraImagem())
                                 <img src="{{ Storage::url($imovel->primeiraImagem()->caminho_imagem) }}"
@@ -27,7 +27,7 @@
                             @else
                                 <p>No image available for this imovel.</p>
                             @endif
-                            <div class="property-info p-3"> <!-- Keep content left-aligned -->
+                            <div class="property-info p-3">
                                 <h3>{{ $imovel->titulo }}</h3>
                                 <p>{{ \Illuminate\Support\Str::limit($imovel->descricao, 50) }}</p>
                                 <a href="{{ route('imovel.show', $imovel->id) }}" class="btn btn-custom">Saiba Mais</a>

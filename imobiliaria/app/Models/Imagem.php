@@ -26,9 +26,6 @@ class Imagem extends Model
         'caminho_imagem',
     ];
 
-    /**
-     * Get the imovel that owns the imagem.
-     */
     public function imovel()
     {
         return $this->belongsTo(Imovel::class);
