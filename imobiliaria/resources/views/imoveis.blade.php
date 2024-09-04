@@ -29,6 +29,7 @@
                         <a href="{{ route('imovel.show', $imovel->id) }}" class="btn btn-custom">Saiba Mais</a>
                     </div>
                 </div>
+                <br>
             @endforeach
         </div>
     </div>
