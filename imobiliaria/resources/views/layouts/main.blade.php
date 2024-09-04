@@ -81,7 +81,7 @@
             <div class="footer-item">
                 <i class="fas fa-envelope"></i>
                 <ion-icon name="at"></ion-icon>
-                <span>ms.alangabriel@gmail.com</span>
+                <span>email@gmail.com</span>
 
             </div>
             <span>D&R Housing &copy; 2024 </span>
