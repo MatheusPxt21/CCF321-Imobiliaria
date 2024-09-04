@@ -22,7 +22,7 @@
                     <div class="property-info">
                         <h3>{{ $imovel->titulo }}</h3>
                         <p>{{ $imovel->descricao }}</p>
-                        <button class="btn">Saiba mais</button>
+                        <a href="{{ route('imovel.show', $imovel->id) }}" class="btn btn-custom">Saiba Mais</a>
                     </div>
                 </div>
             @endforeach

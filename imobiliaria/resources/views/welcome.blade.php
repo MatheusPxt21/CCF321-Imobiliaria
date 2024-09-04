@@ -19,7 +19,7 @@
             <div>
         </div>
         <div class="hero-text">
-            <h1>Cosntruindo Lares</h1>
+            <h1>Construindo Lares</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel massa pulvinar, scelerisque odio sed, sodales sapien. Quisque vehicula lectus nec nunc dapibus, vitae sagittis velit ultrices.</p>
             <a href="#" class="btn btn-custom">Saiba Mais</a>
         </div>
@@ -30,48 +30,23 @@
         <h2>Destaques</h2>
         <div class="highlights-cards">
             <div class="row highlight-card-row">
-                <div class="col-md-3 highlight-card">
-                    <div class="highlight-item">
-                        <img src="/imgs/highlight1.jpg" class="img-fluid">
-                        <div class="highlight-text">
-                            <h4>Lorem Ipsum</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <a href="#" class="btn btn-custom">Saiba Mais</a>
+                @foreach($destaques as $imovel)
+                    <div class="col-md-4 highlight-card">
+                        <div class="highlight-item">
+                            <!-- Exibe a primeira imagem do imóvel, se existir -->
+                            @if($imovel->imagens->isNotEmpty())
+                                <img src="{{ asset('storage/' . $imovel->imagens->first()->caminho_imagem) }}" class="img-fluid">
+                            @else
+                                <img src="/imgs/default.jpg" class="img-fluid" alt="Imagem do imóvel">
+                            @endif
+                            <div class="highlight-text">
+                                <h4>{{ $imovel->titulo }}</h4>
+                                <p>{{ \Illuminate\Support\Str::limit($imovel->descricao, 50) }}</p>
+                                <a href="{{ route('imovel.show', $imovel->id) }}" class="btn btn-custom">Saiba Mais</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3 highlight-card">
-                    <div class="highlight-item">
-                        <img src="/imgs/highlight2.jpg" class="img-fluid">
-                        <div class="highlight-text">
-                            <h4>Lorem Ipsum</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <a href="#" class="btn btn-custom">Saiba Mais</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row highlight-card-row">
-                <div class="col-md-3 highlight-card">
-                    <div class="highlight-item">
-                        <img src="/imgs/highlight1.jpg" class="img-fluid">
-                        <div class="highlight-text">
-                            <h4>Lorem Ipsum</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <a href="#" class="btn btn-custom">Saiba Mais</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 highlight-card">
-                    <div class="highlight-item">
-                        <img src="/imgs/highlight2.jpg" class="img-fluid">
-                        <div class="highlight-text">
-                            <h4>Lorem Ipsum</h4>
-                            <p>Lorem ipsum dolor sit amet.</p>
-                            <a href="#" class="btn btn-custom">Saiba Mais</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
