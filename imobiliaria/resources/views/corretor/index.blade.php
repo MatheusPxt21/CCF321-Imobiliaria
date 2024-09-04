@@ -6,7 +6,7 @@
     <div class="corretor-dashboard">
         <h1>Bem-vindo, {{ Auth::user()->nome }}</h1>
 
-        <h2>Imóveis sob sua responsabilidade</h2>
+        <h2>Imóveis sob sua responsabilidade:</h2>
         <ul>
             @foreach ($imoveis as $imovel)
                 <li>
