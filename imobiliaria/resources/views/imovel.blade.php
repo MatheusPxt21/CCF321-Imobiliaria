@@ -11,7 +11,6 @@
             <div class="carousel-inner">
                 @foreach($imovel->imagens as $index => $imagem)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <!-- Use Storage::url() correctly without adding "app/public/" -->
                         <img src="{{ Storage::url($imagem->caminho_imagem) }}" class="d-block w-100"
                              alt="Imagem {{ $index + 1 }}">
                     </div>

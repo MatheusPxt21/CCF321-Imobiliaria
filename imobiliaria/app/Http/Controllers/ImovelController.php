@@ -17,12 +17,12 @@ class ImovelController extends Controller
      */
     public function index()
     {
-        // Fetch all imoveis from the database
-        $imoveis = Imovel::all();
+        $imoveis = Imovel::with('imagens')->get();
 
         // Pass the imoveis to the view
         return view('imoveis', compact('imoveis'));
     }
+
 
     public function display()
     {
@@ -42,8 +42,6 @@ class ImovelController extends Controller
     public function show($id)
     {
         $imovel = Imovel::with('imagens')->findOrFail($id);
-
-        print $imovel;
 
         return view('imovel', compact('imovel'));
     }

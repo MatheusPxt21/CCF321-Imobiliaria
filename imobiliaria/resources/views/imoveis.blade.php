@@ -18,7 +18,11 @@
         <div class="property-grid">
             @foreach ($imoveis as $imovel)
                 <div class="property-card">
-                    <img src="{{ asset('storage/' . $imovel->image_path) }}" alt="Imagem do Imóvel">
+                    @if($imovel->primeiraImagem())
+                        <img src="{{ Storage::url($imovel->primeiraImagem()->caminho_imagem) }}" alt="Imagem do Imóvel">
+                    @else
+                        <p>No image available for this imovel.</p>
+                    @endif
                     <div class="property-info">
                         <h3>{{ $imovel->titulo }}</h3>
                         <p>{{ $imovel->descricao }}</p>

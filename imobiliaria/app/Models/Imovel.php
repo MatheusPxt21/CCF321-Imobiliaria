@@ -55,4 +55,9 @@ class Imovel extends Model
     {
         return $this->hasMany(Imagem::class, 'imovel_id');
     }
+
+    public function primeiraImagem()
+    {
+        return $this->imagens()->first();
+    }
 }
