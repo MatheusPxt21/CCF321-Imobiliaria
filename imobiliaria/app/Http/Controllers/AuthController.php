@@ -35,12 +35,12 @@ class AuthController extends Controller
 
             if ($request->role === 'admin') {
                 return redirect()->route('admin.corretores');
-            } else {
-                return redirect('/');
+            } elseif ($request->role === 'corretor') {
+                return redirect()->route('corretor.index');
             }
         }
 
-        return redirect('/login');
+        return redirect('/login')->withErrors(['email' => 'Credenciais inválidas']);
     }
 
     public function logout(Request $request)

@@ -31,10 +31,6 @@
             <a href="{{ route('imoveis.display') }}" class="btn btn-custom mx-2">Adicionar Imoveis</a>
 
             <div class="auth-buttons ms-auto d-flex">
-                <a href="/" class="btn btn-custom mx-2">Inicio</a>
-                <a href="{{ route('corretor.visitas') }}" class="btn btn-custom mx-2">Ver Visitas</a>
-                <a href="{{ route('imoveis.store') }}" class="btn btn-custom mx-2">Adicionar Imóvel</a>
-
 
                 @if(auth()->check())
                     <span class="btn btn-custom mx-2">Olá Corretor</span>

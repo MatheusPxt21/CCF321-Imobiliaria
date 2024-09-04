@@ -59,4 +59,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::get('corretor/visitas', [CorretorController::class, 'showVisitas'])->name('corretor.visitas');
-
+Route::get('/corretor/index', [CorretorController::class, 'index'])->name('corretor.index');
