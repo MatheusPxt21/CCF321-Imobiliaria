@@ -4,6 +4,11 @@
 
 @section('content')
     <div class="imovel-details">
+
+        <div class="imovel-actions mt-4">
+            <a href="{{ route('imoveis.index') }}" class="btn btn-primary">Voltar à lista de imóveis</a>
+        </div>
+
         <h1>{{ $imovel->titulo }}</h1>
 
         <div class="imovel-gallery mt-4">
@@ -28,13 +33,8 @@
             <p><strong>Corretor:</strong> {{ $imovel->corretor->nome }}</p>
         </div>
 
-        <div class="imovel-actions mt-4">
-            <a href="{{ route('imoveis.index') }}" class="btn btn-primary">Voltar à lista de imóveis</a>
-        </div>
-
-        <!-- Seção de Fale Conosco -->
         <div class="form-section mt-4">
-            <h3>Fale Conosco:</h3>
+            <h3>Agende sua Visita:</h3>
             <form class="contact-form" method="POST" action="{{ route('contato.submit') }}">
                 @csrf
                 <div class="mb-3">
