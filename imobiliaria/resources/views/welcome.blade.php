@@ -32,8 +32,9 @@
                     <div class="home_highlight-card m-3">
                         <div class="home_highlight-item">
                             @if($imovel->imagens->isNotEmpty())
-                                <img src="{{ asset('storage/' . $imovel->imagens->first()->caminho_imagem) }}"
-                                     class="img-fluid">
+                                <img src="{{ Storage::url($imovel->primeiraImagem()->caminho_imagem) }}"
+                                     style="width: 400px; height: 200px; object-fit: cover; object-position: center;"
+                                     alt="Imagem do Imóvel">
                             @else
                                 <img src="/imgs/default.jpg" class="img-fluid" alt="Imagem do imóvel">
                             @endif

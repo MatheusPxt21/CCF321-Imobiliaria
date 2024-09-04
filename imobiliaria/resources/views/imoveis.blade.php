@@ -16,16 +16,18 @@
 
         <!-- Seção de Imóveis -->
         <div class="property-grid container">
-            <div class="row">
+            <div class="row justify-content-center"> <!-- Center the cards in the row -->
                 @foreach ($imoveis as $imovel)
-                    <div class="col-12 col-lg-6 mb-4"> <!-- Full width on small screens, half width on large screens -->
+                    <div class="col-12 col-lg-5 mb-4 d-flex justify-content-center"> <!-- Full width on small screens, half width on large screens, centered -->
                         <div class="property-card">
                             @if($imovel->primeiraImagem())
-                                <img src="{{ Storage::url($imovel->primeiraImagem()->caminho_imagem) }}" class="img-fluid" alt="Imagem do Imóvel">
+                                <img src="{{ Storage::url($imovel->primeiraImagem()->caminho_imagem) }}"
+                                     style="width: 400px; height: 200px; object-fit: cover; object-position: center;"
+                                     alt="Imagem do Imóvel">
                             @else
                                 <p>No image available for this imovel.</p>
                             @endif
-                            <div class="property-info p-3">
+                            <div class="property-info p-3"> <!-- Keep content left-aligned -->
                                 <h3>{{ $imovel->titulo }}</h3>
                                 <p>{{ \Illuminate\Support\Str::limit($imovel->descricao, 50) }}</p>
                                 <a href="{{ route('imovel.show', $imovel->id) }}" class="btn btn-custom">Saiba Mais</a>
