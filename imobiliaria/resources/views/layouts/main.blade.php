@@ -76,7 +76,7 @@
             <div class="footer-item">
                 <i class="fas fa-phone"></i>
                 <ion-icon name="call"></ion-icon>
-                <span>(37) 9807-1816</span>
+                <span>(11) 11111-1111</span>
             </div>
             <div class="footer-item">
                 <i class="fas fa-envelope"></i>
