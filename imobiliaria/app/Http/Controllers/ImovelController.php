@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Imagem;
 use App\Models\Imovel;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,8 @@ class ImovelController extends Controller
      */
     public function show($id)
     {
-        $imovel = Imovel::findOrFail($id);
+        // Retrieve the imovel along with its related images
+        $imovel = Imovel::with('imagens')->findOrFail($id);
 
         return view('imovel', compact('imovel'));
     }
@@ -64,18 +66,33 @@ class ImovelController extends Controller
             'tipo' => 'required|in:Casa,Apartamento,Comercial,Terreno',
             'categorias' => 'required|string',
             'valor' => 'nullable|numeric|min:0',
-            'corretor_id' => 'required|exists:corretores,id',
+            'imagens.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // validate images
         ]);
 
         // Create a new Imovel instance and save it to the database
-        Imovel::create([
+        $imovel = Imovel::create([
             'titulo' => $validatedData['titulo'],
             'descricao' => $validatedData['descricao'],
             'tipo' => $validatedData['tipo'],
             'categorias' => $validatedData['categorias'],
             'valor' => $validatedData['valor'],
-            'corretor_id' => $validatedData['corretor_id'],
+            'corretor_id' => 9,
         ]);
+
+        // Handle image uploads
+        if ($request->hasFile('imagens')) {
+            foreach ($request->file('imagens') as $file) {
+                // Generate a unique file name and save it to the public directory
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $filePath = $file->storeAs('imgs/photos', $fileName, 'public');
+
+                // Save the image path to the database
+                Imagem::create([
+                    'imovel_id' => $imovel->id,
+                    'caminho_imagem' => $filePath,
+                ]);
+            }
+        }
 
         // Redirect to the list of imoveis with a success message
         return redirect()->route('imoveis.index')->with('success', 'Imóvel criado com sucesso!');

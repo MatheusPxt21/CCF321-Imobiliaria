@@ -47,4 +47,12 @@ class Imovel extends Model
     {
         return $this->belongsTo(Corretor::class);
     }
+
+    /**
+     * Get the images for the imovel.
+     */
+    public function imagens()
+    {
+        return $this->hasMany(Imagem::class, 'imovel_id');
+    }
 }
