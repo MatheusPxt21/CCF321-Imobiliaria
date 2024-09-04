@@ -216,3 +216,88 @@
     padding: 40px;
     border-radius: 15px;
 }
+
+
+/* ========= Páginas ADM ============= */
+.container {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    padding: 20px;
+    background-color: #f5e1c1; /* Cor de fundo da página */
+    border-radius: 15px;
+}
+
+.container h1 {
+    font-family: 'Noto Sans', sans-serif;
+    color: #4b3621;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #4b3621; /* Cor de fundo do botão primário */
+    color: #f5e1c1; /* Cor do texto do botão primário */
+    border-radius: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+    background-color: #3c2b18; /* Cor ao passar o mouse no botão primário */
+}
+
+.table-container {
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Cor de fundo da tabela */
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #4b3621; /* Cor de fundo dos cabeçalhos da tabela */
+    color: #f5e1c1; /* Cor do texto dos cabeçalhos da tabela */
+}
+
+.table td {
+    color: #4b3621; /* Cor do texto das células da tabela */
+}
+
+.table .btn {
+    margin-right: 5px; /* Espaçamento entre os botões */
+    border-radius: 20px;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.table .btn-info {
+    background-color: #4b3621; /* Cor de fundo do botão de visualização */
+    color: #f5e1c1; /* Cor do texto do botão de visualização */
+}
+
+.table .btn-info:hover {
+    background-color: #3c2b18; /* Cor ao passar o mouse no botão de visualização */
+}
+
+.table .btn-danger {
+    background-color: #d9534f; /* Cor de fundo do botão de exclusão */
+    color: #fff; /* Cor do texto do botão de exclusão */
+}
+
+.table .btn-danger:hover {
+    background-color: #c9302c; /* Cor ao passar o mouse no botão de exclusão */
+}
+
