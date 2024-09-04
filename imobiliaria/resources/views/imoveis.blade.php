@@ -8,10 +8,10 @@
         <!-- Seção de Busca -->
         <div class="search-section text-center">
             <h1>ENCONTRE SEU IMÓVEL DOS SONHOS</h1>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="button">PESQUISAR</button>
-            </div>
+            <form action="{{ route('imoveis.index') }}" method="GET" class="search-bar">
+                <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}">
+                <button type="submit">PESQUISAR</button>
+            </form>
         </div>
 
         <!-- Seção de Imóveis -->

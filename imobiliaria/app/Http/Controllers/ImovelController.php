@@ -15,12 +15,17 @@ class ImovelController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
      */
-    public function index()
+    public function index(Request $request)
     {
-        $imoveis = Imovel::with('imagens')->get();
+        $search = $request->input('search');
 
-        // Pass the imoveis to the view
-        return view('imoveis', compact('imoveis'));
+        $imoveis = Imovel::with('imagens')
+            ->when($search, function ($query, $search) {
+                return $query->where('titulo', 'like', '%' . $search . '%');
+            })
+            ->get();
+
+        return view('imoveis', compact('imoveis', 'search'));
     }
 
 
