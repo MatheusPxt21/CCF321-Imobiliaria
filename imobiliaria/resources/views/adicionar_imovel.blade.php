@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.corretor')
 
 @section('title', 'Adicionar Imóvel')
 
