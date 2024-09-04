@@ -37,6 +37,16 @@
                        required>
             </div>
 
+            <div class="mb-3">
+                <label for="corretor_id" class="form-label">Corretor Responsável</label>
+                <select class="form-control" id="corretor_id" name="corretor_id" required>
+                    <option value="" disabled selected>Selecione um corretor</option>
+                    @foreach($corretores as $corretor)
+                        <option value="{{ $corretor->id }}">{{ $corretor->id }} - {{ $corretor->nome }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <!-- Multiple Image Upload -->
             <div class="mb-3">
                 <label for="imagens" class="form-label">Imagens do Imóvel</label>
