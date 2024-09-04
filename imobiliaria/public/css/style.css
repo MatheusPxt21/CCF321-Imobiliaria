@@ -206,6 +206,72 @@
 
 /* ========= Página Home ============= */
 
+.hero-section {
+    text-align: center;
+}
+
+.hero-content {
+    margin-top: 5rem;
+    margin-inline: 10rem;
+}
+
+.home_img-hero-section img {
+    width: 60%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.home_hero-text {
+    color: #f5e1c1;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.home_highlight-section {
+    background-color: #f5e1c1;
+    padding: 20px;
+    margin: 2rem;
+    border-radius: 15px;
+}
+
+.home_highlights-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os itens */
+    gap: 2rem; /* Ajuste no espaçamento entre os itens */
+}
+
+.home_highlight-card {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(33.333% - 2rem);
+    max-width: calc(33.333% - 2rem);
+    margin-bottom: 1.5rem;
+}
+
+.home_highlight-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.home_highlight-text h4 {
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    color: #4b3621;
+    margin-top: 10px;
+}
+
+.home_highlight-text p {
+    font-family: 'Noto Sans', sans-serif;
+    color: #4b3621;
+    margin-bottom: 10px;
+}
+
 
 /* ========= Página Corretor ============= */
 .corretorContent{
