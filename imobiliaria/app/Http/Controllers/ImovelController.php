@@ -6,6 +6,7 @@ use App\Models\Imagem;
 use App\Models\Imovel;
 use Illuminate\Http\Request;
 use App\Models\Corretor;
+use function Laravel\Prompts\error;
 
 class ImovelController extends Controller
 {
@@ -40,8 +41,9 @@ class ImovelController extends Controller
      */
     public function show($id)
     {
-        // Retrieve the imovel along with its related images
         $imovel = Imovel::with('imagens')->findOrFail($id);
+
+        print $imovel;
 
         return view('imovel', compact('imovel'));
     }
@@ -86,7 +88,18 @@ class ImovelController extends Controller
         ]);
 
         // Processamento das imagens
-        // (continuação do código existente)
+        if ($request->hasFile('imagens')) {
+            foreach ($request->file('imagens') as $imagem) {
+                // Armazenar a imagem
+                $path = $imagem->store('imgs/photos', 'public');
+
+                // Salvar a imagem no banco de dados
+                Imagem::create([
+                    'imovel_id' => $imovel->id,
+                    'caminho_imagem' => $path,
+                ]);
+            }
+        }
 
         return redirect()->route('imoveis.index')->with('success', 'Imóvel criado com sucesso!');
     }
