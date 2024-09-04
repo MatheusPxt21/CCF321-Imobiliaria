@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CorretorController;
 use App\Http\Controllers\ImovelController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -56,3 +57,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Admin Visitas Routes
     Route::get('/visitas', [AdminController::class, 'showVisitas'])->name('visitas');
 });
+
+Route::get('corretor/visitas', [CorretorController::class, 'showVisitas'])->name('corretor.visitas');
+
