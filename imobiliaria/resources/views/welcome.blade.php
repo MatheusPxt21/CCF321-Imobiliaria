@@ -16,9 +16,7 @@
                 </div>
                 <div class="home_hero-text">
                     <h1>Construindo Lares</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel massa pulvinar,
-                        scelerisque odio sed, sodales sapien. Quisque vehicula lectus nec nunc dapibus, vitae sagittis
-                        velit ultrices.</p>
+                    <p>Nossa missão é encontrar o imóvel perfeito para você. Com uma ampla seleção de casas, apartamentos e terrenos, oferecemos atendimento personalizado e as melhores oportunidades do mercado. Seu novo lar começa aqui!</p>
                     <a href="/contato" class="btn btn-custom">Saiba Mais</a>
                 </div>
             </div>
