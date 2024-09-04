@@ -6,27 +6,15 @@
     <div class="imovel-details">
         <h1>{{ $imovel->titulo }}</h1>
 
-        <!-- Image Carousel -->
-        <div id="imovelCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                @foreach($imovel->imagens as $index => $imagem)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <img src="{{ Storage::url($imagem->caminho_imagem) }}" class="d-block w-100"
-                             alt="Imagem {{ $index + 1 }}">
-                    </div>
-                @endforeach
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#imovelCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#imovelCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+        <div class="imovel-gallery mt-4">
+            @foreach($imovel->imagens as $imagem)
+                <div class="imovel-gallery-item">
+                    <img src="{{ Storage::url($imagem->caminho_imagem) }}" alt="Imagem do imóvel" class="img-fluid">
+                </div>
+            @endforeach
         </div>
 
-        <div class="imovel-info">
+        <div class="imovel-info mt-4">
             <p><strong>Descrição:</strong> {{ $imovel->descricao }}</p>
             <p><strong>Tipo:</strong> {{ $imovel->tipo_imovel }}</p>
             <p><strong>Categorias:</strong>
@@ -42,6 +30,32 @@
 
         <div class="imovel-actions mt-4">
             <a href="{{ route('imoveis.index') }}" class="btn btn-primary">Voltar à lista de imóveis</a>
+        </div>
+
+        <!-- Seção de Fale Conosco -->
+        <div class="form-section mt-4">
+            <h3>Fale Conosco:</h3>
+            <form class="contact-form" method="POST" action="{{ route('contato.submit') }}">
+                @csrf
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Insira seu nome" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Insira um telefone para contato" required>
+                </div>
+                <div class="mb-3">
+                    <input type="date" class="form-control" name="date" id="date" required>
+                </div>
+                <div class="mb-3">
+                    <input type="time" class="form-control" name="time" id="time" required>
+                </div>
+                <div class="mb-3">
+                <textarea class="form-control" name="message" id="message" rows="3" readonly>
+                    Visita agendada para o imóvel {{ $imovel->id }}
+                </textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Enviar</button>
+            </form>
         </div>
     </div>
 @endsection
